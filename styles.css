@@ -1789,7 +1789,7 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
 }
 .contact-mail {
   font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(20px, 2.6vw, 28px);
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--ink-900);
@@ -1799,6 +1799,48 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
   transition: color var(--dur-fast) var(--ease-standard);
 }
 .contact-mail:hover { color: var(--copper-600); }
+
+/* === Contact links (icon row) === */
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-6) 0 var(--sp-5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-3);
+}
+.contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 10px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--bg-raised);
+  color: var(--ink-800);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard),
+              transform var(--dur-fast) var(--ease-standard);
+}
+.contact-links a i {
+  font-size: 18px;
+  color: var(--copper-500);
+}
+.contact-links a:hover {
+  border-color: var(--copper-500);
+  color: var(--copper-500);
+  transform: translateY(-2px);
+}
+.contact-meta i {
+  color: var(--copper-500);
+  margin-right: 4px;
+  vertical-align: -2px;
+}
 
 .contact-meta {
   display: flex;
