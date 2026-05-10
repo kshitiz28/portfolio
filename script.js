@@ -245,6 +245,44 @@
     li.addEventListener('mouseenter', () => setFamily(li.dataset.fam));
     li.addEventListener('mouseleave', clear);
   });
+
+  // Total tools count for the legend footer
+  const totalEl = document.getElementById('famTotal');
+  if (totalEl) totalEl.textContent = String(tags.length);
+
+  // Distribution spectrum — proportional segments per family
+  const specEl = document.getElementById('famSpectrum');
+  if (specEl) {
+    const famWeights = {};
+    tags.forEach(t => { famWeights[t.f] = (famWeights[t.f] || 0) + t.w; });
+    const order = ['data','cloud','ml','llm','lang','craft'];
+    const labels = {
+      data: 'Data engineering', cloud: 'Cloud & ops',
+      ml: 'ML & modelling', llm: 'LLMs & NLP',
+      lang: 'Languages', craft: 'Craft & tooling'
+    };
+    const total = order.reduce((s, f) => s + (famWeights[f] || 0), 0);
+    specEl.innerHTML = '';
+    order.forEach(f => {
+      const w = famWeights[f] || 0;
+      const pct = total ? (w / total * 100).toFixed(2) : 0;
+      const li = document.querySelector(`.fam-list li[data-fam="${f}"]`);
+      const color = li ? getComputedStyle(li).getPropertyValue('--fam').trim() : '#888';
+      const seg = document.createElement('div');
+      seg.className = 'seg';
+      seg.style.flex = `${w} 0 0`;
+      seg.style.setProperty('--fam', color);
+      seg.dataset.fam = f;
+      seg.title = `${labels[f]} — ${pct}%`;
+      seg.addEventListener('mouseenter', () => {
+        document.querySelectorAll(`.fam-list li[data-fam="${f}"]`).forEach(el => el.dispatchEvent(new Event('mouseenter')));
+      });
+      seg.addEventListener('mouseleave', () => {
+        document.querySelectorAll(`.fam-list li[data-fam="${f}"]`).forEach(el => el.dispatchEvent(new Event('mouseleave')));
+      });
+      specEl.appendChild(seg);
+    });
+  }
 })();
 
 /* ---------- Skill wheel (legacy) ---------- */

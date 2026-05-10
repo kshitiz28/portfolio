@@ -320,13 +320,19 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
 
 @media (max-width: 880px) {
   .model-card {
-    position: relative;
+    position: static;
     top: auto; right: auto;
     width: 100%;
     max-width: 360px;
-    margin: 0 0 var(--sp-7) auto;
+    margin: var(--sp-7) 0 0 auto;
     transform: none;
+    order: 99;
   }
+  .hero { display: flex; flex-direction: column; }
+  .hero > .hero-title { order: 1; }
+  .hero > .hero-roles { order: 2; }
+  .hero > .hero-lede-block { order: 3; }
+  .hero > .index-row { order: 4; }
 }
 
 /* diagonal red+blue airmail border stripes */
@@ -1829,6 +1835,21 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
   border-bottom: 1px solid var(--copper-500);
 }
 @media (max-width: 600px) {
+  .page { padding: 0 var(--sp-5); }
+  .hero-title { font-size: clamp(48px, 14vw, 92px) !important; }
+  .hero-roles { font-size: clamp(18px, 5.6vw, 26px) !important; }
+  .hero-lede { font-size: clamp(18px, 4.4vw, 22px) !important; max-width: 100% !important; }
+  .index-row { grid-template-columns: 1fr 1fr !important; }
+  .masthead-inner { flex-wrap: wrap; gap: var(--sp-3); }
+  .nav { gap: var(--sp-3) !important; flex-wrap: wrap; }
+  .folio { grid-template-columns: 1fr !important; gap: var(--sp-5) !important; }
+  .recs-grid { grid-template-columns: 1fr !important; }
+  .contact h2 { font-size: clamp(40px, 12vw, 72px) !important; }
+  .contact-mail { font-size: clamp(20px, 6vw, 32px) !important; word-break: break-all; }
+  .contact-research { flex-direction: column; gap: var(--sp-3); }
+  .cr-tag { border-right: none; border-bottom: 1px solid var(--rule); padding: 0 0 var(--sp-3); }
+}
+@media (max-width: 600px) {
   .contact-research { flex-direction: column; gap: var(--sp-3); }
   .cr-tag { border-right: none; border-bottom: 1px solid var(--rule); padding: 0 0 var(--sp-3); }
 }
@@ -1859,7 +1880,8 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
   align-items: start;
 }
 @media (min-width: 960px) {
-  .cloud-grid { grid-template-columns: 1.5fr 1fr; gap: var(--sp-9); }
+  .cloud-grid { grid-template-columns: 1.5fr 1fr; gap: var(--sp-9); align-items: stretch; }
+  .cloud-stage, .cloud-legend { height: 100%; }
 }
 
 .cloud-stage {
@@ -1947,6 +1969,10 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
   border: 1px solid var(--rule);
   background: var(--bg-raised);
   padding: var(--sp-7);
+  display: flex;
+  flex-direction: column;
+}
+  padding: var(--sp-7);
 }
 .cloud-legend h3 {
   font-family: var(--font-display);
@@ -2007,6 +2033,66 @@ body[data-mood="night"] .mood-track { background: var(--bg-sunken); border-color
 .fam-list li:hover { color: var(--fam); }
 .fam-list li.on { color: var(--fam); }
 .fam-list li.on .dot { transform: scale(1.6); }
+
+/* Legend footer — fills the empty space below the family list */
+.legend-foot {
+  margin-top: auto;
+  padding-top: var(--sp-6);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.lf-spectrum-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--sp-4);
+}
+.lf-spectrum {
+  display: flex;
+  width: 100%;
+  height: 8px;
+  border: 1px solid var(--rule-strong);
+  background: var(--bg);
+  overflow: hidden;
+}
+.lf-spectrum .seg {
+  height: 100%;
+  background: var(--fam, var(--ink-700));
+  position: relative;
+  transition: filter var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard);
+}
+.lf-spectrum .seg + .seg { border-left: 1px solid var(--bg); }
+.lf-spectrum .seg:hover { filter: brightness(1.1); }
+.legend-foot .lf-k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--fg3);
+}
+.legend-foot .lf-v {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--fg2);
+  line-height: 1.45;
+}
+.legend-foot .lf-v strong {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--copper-600);
+}
+.legend-foot .lf-note {
+  margin: var(--sp-3) 0 0 !important;
+  padding-top: var(--sp-3);
+  border-top: 1px dashed var(--rule);
+  font-family: var(--font-display) !important;
+  font-style: italic;
+  font-size: 13px !important;
+  color: var(--fg3) !important;
+  line-height: 1.5;
+}
 
 /* ============================================================
    WHEEL (legacy — kept for backwards compatibility, unused) */
@@ -2302,3 +2388,66 @@ body[data-mood="night"] .tw-opt.on {
 }
 @media (hover: hover) and (pointer: fine) { .cursor-dot { display: block; } }
 .cursor-dot.lift { width: 28px; height: 28px; background: rgba(176, 122, 60, 0.08); }
+
+/* ============================================================
+   ROUNDED EDGES — soften card-like boxes
+   Applied via overrides at the end so it wins specificity
+   ============================================================ */
+.model-card,
+.hero-stamp,
+.tl-item,
+.tl-body,
+.folio,
+.folio-card,
+.folio-now-tag,
+.proj,
+.cloud-stage,
+.cloud-legend,
+.lf-spectrum,
+.rec,
+.pub,
+.award,
+.contact-card,
+.tweaks-panel,
+.cite,
+.now-card {
+  border-radius: 12px;
+}
+
+/* Slightly tighter radius for inner / smaller blocks */
+.tl-when,
+.proj-meta,
+.proj-stats,
+.fam-list,
+.legend-foot,
+.eyebrow,
+.pageno,
+.kbd,
+.stamp-folio,
+.stamp-num,
+.cr-tag {
+  border-radius: 6px;
+}
+
+/* Inner image masks should follow the card's curve */
+.portrait-frame,
+.proj-thumb,
+.model-card .mc-screen,
+.model-card .mc-bar {
+  border-radius: 8px;
+}
+
+/* Keep circles circular (these elements use border-radius: 50%) — explicitly preserved */
+.brand-mark,
+.brand-mark::before,
+.brand-mark::after,
+.fam-list li .dot,
+.lf-spectrum-head .lf-v strong,
+.mc-tab-dots span,
+.mc-dot,
+.folio-now-tag .pulse,
+.tw-slider input[type="range"]::-webkit-slider-thumb,
+.tw-slider input[type="range"]::-moz-range-thumb,
+.cursor-dot {
+  border-radius: 50%;
+}
