@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 260" role="img" aria-label="Celestial arch illustration">
+  <rect width="600" height="260" fill="#F3ECDE"></rect>
+  
+  <line x1="0" y1="230" x2="600" y2="230" fill="none" stroke="#1A2038" stroke-width="1.1"></line>
+  
+  <g transform="translate(300 230)">
+    <path d="M -260 0 A 260 220 0 0 1 260 0" fill="none" stroke="#1A2038" stroke-width="1.1"></path>
+    <path d="M -220 0 A 220 186 0 0 1 220 0" fill="none" stroke="#1A2038" stroke-width="0.6" opacity="0.5"></path>
+    <path d="M -180 0 A 180 152 0 0 1 180 0" fill="none" stroke="#1A2038" stroke-width="0.6" opacity="0.5"></path>
+    <path d="M -140 0 A 140 118 0 0 1 140 0" fill="none" stroke="#1A2038" stroke-width="0.6" opacity="0.5"></path>
+    <path d="M -100 0 A 100 84 0 0 1 100 0" fill="none" stroke="#1A2038" stroke-width="0.6" opacity="0.5"></path>
+
+    
+    <circle cx="0" cy="-168" r="14" fill="none" stroke="#B07A3C" stroke-width="1.2"></circle>
+    <g fill="none" stroke="#B07A3C" stroke-width="0.9">
+      <line x1="-22" y1="-168" x2="-30" y2="-168"></line>
+      <line x1="22" y1="-168" x2="30" y2="-168"></line>
+      <line x1="0" y1="-190" x2="0" y2="-198"></line>
+      <line x1="0" y1="-146" x2="0" y2="-138"></line>
+      <line x1="-16" y1="-184" x2="-21" y2="-189"></line>
+      <line x1="16" y1="-184" x2="21" y2="-189"></line>
+      <line x1="-16" y1="-152" x2="-21" y2="-147"></line>
+      <line x1="16" y1="-152" x2="21" y2="-147"></line>
+    </g>
+    
+    <circle cx="-200" cy="-80" r="1.4" fill="#1A2038"></circle>
+    <circle cx="-150" cy="-150" r="1" fill="#1A2038"></circle>
+    <circle cx="-80" cy="-190" r="1.6" fill="#1A2038"></circle>
+    <circle cx="90" cy="-210" r="1.2" fill="#1A2038"></circle>
+    <circle cx="170" cy="-140" r="1" fill="#1A2038"></circle>
+    <circle cx="220" cy="-60" r="1.6" fill="#1A2038"></circle>
+    <circle cx="-250" cy="-40" r="1" fill="#1A2038"></circle>
+    <circle cx="60" cy="-120" r="0.9" fill="#1A2038"></circle>
+    <circle cx="-40" cy="-80" r="0.9" fill="#1A2038"></circle>
+
+    
+    <line x1="0" y1="0" x2="0" y2="-260" fill="none" stroke="#1A2038" stroke-width="0.6" opacity="0.5"></line>
+  </g>
+</svg>

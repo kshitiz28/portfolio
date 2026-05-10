@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Sample birth chart (North Indian style)">
+  <defs>
+    
+  </defs>
+
+  <rect width="400" height="400" fill="#FBF6E9"></rect>
+
+  
+  <g transform="translate(40 40)">
+    
+    <rect x="0" y="0" width="320" height="320" class="wheel"></rect>
+    
+    <line x1="0" y1="0" x2="320" y2="320" class="wheel"></line>
+    <line x1="320" y1="0" x2="0" y2="320" class="wheel"></line>
+    
+    <polygon points="160,0 320,160 160,320 0,160" class="wheel"></polygon>
+
+    
+    <rect x="40" y="40" width="240" height="240" class="hair"></rect>
+
+    
+    <text class="num" x="158" y="72">1</text>
+    <text class="num" x="78" y="72">2</text>
+    <text class="num" x="28" y="122">3</text>
+    <text class="num" x="78" y="228">4</text>
+    <text class="num" x="28" y="278">5</text>
+    <text class="num" x="78" y="328">6</text>
+    <text class="num" x="158" y="328">7</text>
+    <text class="num" x="238" y="328">8</text>
+    <text class="num" x="288" y="278">9</text>
+    <text class="num" x="238" y="228">10</text>
+    <text class="num" x="288" y="122">11</text>
+    <text class="num" x="238" y="72">12</text>
+
+    
+    <text class="pl" x="152" y="52">☉</text>      
+    <text class="pl" x="172" y="52">☿</text>      
+    <text class="pl" x="72" y="200">♄</text>      
+    <text class="pl" x="215" y="200">♃</text>     
+    <text class="pl" x="260" y="110">♀</text>     
+    <text class="pl" x="290" y="250">☽</text>     
+    <text class="pl" x="30" y="250">♂</text>      
+
+    
+    <text class="asc" x="138" y="90">ASC</text>
+  </g>
+</svg>

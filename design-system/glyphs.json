@@ -1,0 +1,38 @@
+{
+  "zodiac": {
+    "aries":       { "glyph": "♈︎", "name": "Aries",       "sanskrit": "Mesha",       "element": "fire",  "ruler": "mars" },
+    "taurus":      { "glyph": "♉︎", "name": "Taurus",      "sanskrit": "Vrishabha",   "element": "earth", "ruler": "venus" },
+    "gemini":      { "glyph": "♊︎", "name": "Gemini",      "sanskrit": "Mithuna",     "element": "air",   "ruler": "mercury" },
+    "cancer":      { "glyph": "♋︎", "name": "Cancer",      "sanskrit": "Karka",       "element": "water", "ruler": "moon" },
+    "leo":         { "glyph": "♌︎", "name": "Leo",         "sanskrit": "Simha",       "element": "fire",  "ruler": "sun" },
+    "virgo":       { "glyph": "♍︎", "name": "Virgo",       "sanskrit": "Kanya",       "element": "earth", "ruler": "mercury" },
+    "libra":       { "glyph": "♎︎", "name": "Libra",       "sanskrit": "Tula",        "element": "air",   "ruler": "venus" },
+    "scorpio":     { "glyph": "♏︎", "name": "Scorpio",     "sanskrit": "Vrishchika",  "element": "water", "ruler": "mars" },
+    "sagittarius": { "glyph": "♐︎", "name": "Sagittarius", "sanskrit": "Dhanu",       "element": "fire",  "ruler": "jupiter" },
+    "capricorn":   { "glyph": "♑︎", "name": "Capricorn",   "sanskrit": "Makara",      "element": "earth", "ruler": "saturn" },
+    "aquarius":    { "glyph": "♒︎", "name": "Aquarius",    "sanskrit": "Kumbha",      "element": "air",   "ruler": "saturn" },
+    "pisces":      { "glyph": "♓︎", "name": "Pisces",      "sanskrit": "Meena",       "element": "water", "ruler": "jupiter" }
+  },
+  "planets": {
+    "sun":     { "glyph": "☉", "name": "Sun",      "sanskrit": "Surya",     "tint": "--sun-tint" },
+    "moon":    { "glyph": "☽", "name": "Moon",     "sanskrit": "Chandra",   "tint": "--moon-tint" },
+    "mars":    { "glyph": "♂", "name": "Mars",     "sanskrit": "Mangal",    "tint": "--mars-tint" },
+    "mercury": { "glyph": "☿", "name": "Mercury",  "sanskrit": "Budh",      "tint": "--mercury-tint" },
+    "jupiter": { "glyph": "♃", "name": "Jupiter",  "sanskrit": "Guru",      "tint": "--jupiter-tint" },
+    "venus":   { "glyph": "♀", "name": "Venus",    "sanskrit": "Shukra",    "tint": "--venus-tint" },
+    "saturn":  { "glyph": "♄", "name": "Saturn",   "sanskrit": "Shani",     "tint": "--saturn-tint" },
+    "rahu":    { "glyph": "☊", "name": "Rahu",     "sanskrit": "Rahu",      "tint": "--rahu-tint" },
+    "ketu":    { "glyph": "☋", "name": "Ketu",     "sanskrit": "Ketu",      "tint": "--ketu-tint" }
+  },
+  "misc": {
+    "ascendant": "Asc",
+    "conjunction": "☌",
+    "opposition": "☍",
+    "trine": "△",
+    "square": "□",
+    "sextile": "✶",
+    "retrograde": "℞",
+    "north_node": "☊",
+    "south_node": "☋"
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 20" role="img" aria-label="Divider ornament">
+  <g stroke="#1A2038" stroke-width="0.9" fill="none">
+    <line x1="0" y1="10" x2="170" y2="10"></line>
+    <line x1="230" y1="10" x2="400" y2="10"></line>
+    <circle cx="200" cy="10" r="4"></circle>
+    <circle cx="200" cy="10" r="1.4" fill="#B07A3C" stroke="none"></circle>
+    <line x1="178" y1="10" x2="192" y2="10"></line>
+    <line x1="208" y1="10" x2="222" y2="10"></line>
+  </g>
+</svg>

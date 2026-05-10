@@ -1,0 +1,307 @@
+/* ============================================================
+   ASTROPEDIA — Colors & Type Foundation
+   A Vedic astrology app. Aesthetic: retro/vintage astronomy
+   meets minimal modernist. "Celestial Parchment."
+   ============================================================ */
+
+/* ---------- FONTS ----------
+   Primary faces via Google Fonts. If/when custom brand fonts
+   are licensed, drop .woff2 files into /fonts and replace the
+   @import below with @font-face blocks.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Symbols+2&display=swap');
+
+:root {
+  /* =========================================================
+     COLORS — Base palette
+     ========================================================= */
+
+  /* Parchment / paper (backgrounds) */
+  --parchment-50:  #FBF6E9;  /* lightest, highlight paper */
+  --parchment-100: #F3ECDE;  /* DEFAULT background */
+  --parchment-200: #EADFC7;  /* raised paper, cards */
+  --parchment-300: #DCCDAE;  /* rules, dividers on parchment */
+  --parchment-400: #C4B08A;
+
+  /* Ink / midnight (text, chart lines, primary) */
+  --ink-900: #0E1326;  /* deepest, like night sky */
+  --ink-800: #1A2038;  /* DEFAULT ink */
+  --ink-700: #2B334F;
+  --ink-600: #434D6C;
+  --ink-500: #5E6886;
+  --ink-400: #8A93AE;
+  --ink-300: #B5BBCC;
+
+  /* Copper / brass (accents, highlights, CTAs) */
+  --copper-50:  #F7ECDB;
+  --copper-100: #ECD4B0;
+  --copper-200: #DBB382;
+  --copper-300: #C69558;
+  --copper-400: #B07A3C;  /* DEFAULT copper */
+  --copper-500: #8F5F2C;
+  --copper-600: #6E471F;
+  --copper-700: #4C3015;
+
+  /* Vermilion / sindoor (auspicious, benefic emphasis, errors) */
+  --vermilion-100: #F4D6CB;
+  --vermilion-300: #D97856;
+  --vermilion-500: #B74A26;
+  --vermilion-700: #7E2E14;
+
+  /* Verdigris / oxidized green (used sparingly — moon, water signs) */
+  --verdigris-100: #DCE6DB;
+  --verdigris-300: #7FA18A;
+  --verdigris-500: #47705A;
+  --verdigris-700: #264336;
+
+  /* =========================================================
+     COLORS — Semantic
+     ========================================================= */
+  --bg:             var(--parchment-100);
+  --bg-raised:     var(--parchment-50);
+  --bg-sunken:     var(--parchment-200);
+  --surface-card:  var(--parchment-50);
+
+  --fg1: var(--ink-900);           /* primary text */
+  --fg2: var(--ink-700);           /* secondary text */
+  --fg3: var(--ink-500);           /* tertiary / meta */
+  --fg4: var(--ink-400);           /* disabled / hints */
+
+  --accent:         var(--copper-400);
+  --accent-strong:  var(--copper-500);
+  --accent-soft:    var(--copper-100);
+
+  --rule:          var(--parchment-300);      /* hairline dividers */
+  --rule-strong:   var(--ink-800);            /* emphatic rule */
+  --rule-dotted:   var(--ink-400);            /* dotted rule color */
+
+  --success: var(--verdigris-500);
+  --warning: var(--copper-500);
+  --danger:  var(--vermilion-500);
+  --info:    var(--ink-700);
+
+  /* Chart wheel colors (used inside birth chart SVG) */
+  --chart-ink:      var(--ink-800);
+  --chart-paper:   var(--parchment-50);
+  --chart-accent:  var(--copper-400);
+  --chart-house:   var(--parchment-300);
+
+  /* Planet glyph tints (subtle — for chips/badges) */
+  --sun-tint:      #C88A2E;
+  --moon-tint:     #8A93AE;
+  --mars-tint:     #B74A26;
+  --mercury-tint:  #47705A;
+  --jupiter-tint:  #B07A3C;
+  --venus-tint:    #D97856;
+  --saturn-tint:   #2B334F;
+  --rahu-tint:     #5E6886;
+  --ketu-tint:     #8F5F2C;
+
+  /* =========================================================
+     TYPOGRAPHY
+     ========================================================= */
+  --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --font-sans:    'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-symbol:  'Noto Sans Symbols 2', 'Segoe UI Symbol', 'Apple Symbols', sans-serif;
+
+  /* Type scale — mobile-first, optical-sizing in mind */
+  --fs-display: 44px;   /* hero, splash */
+  --fs-h1: 32px;
+  --fs-h2: 26px;
+  --fs-h3: 20px;
+  --fs-h4: 17px;
+  --fs-body: 16px;
+  --fs-body-sm: 14px;
+  --fs-caption: 12px;
+  --fs-micro: 11px;
+  --fs-glyph: 22px;    /* default size for ♈︎☉ etc. */
+
+  /* Line heights */
+  --lh-tight: 1.12;
+  --lh-snug: 1.25;
+  --lh-normal: 1.45;
+  --lh-loose: 1.65;
+
+  /* Letter spacing */
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:    0.04em;
+  --tracking-caps:    0.14em;   /* ALL-CAPS eyebrows */
+
+  /* Weights */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold: 600;
+  --fw-bold:    700;
+
+  /* =========================================================
+     SPACING — 4px base, named scale
+     ========================================================= */
+  --sp-0:  0;
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-7:  32px;
+  --sp-8:  40px;
+  --sp-9:  56px;
+  --sp-10: 72px;
+
+  /* =========================================================
+     RADII — small, deliberate. No big rounded corners.
+     ========================================================= */
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-pill: 999px;
+
+  /* =========================================================
+     SHADOWS — paper has weight. Soft, warm, never blue.
+     ========================================================= */
+  --shadow-xs: 0 1px 0 rgba(26, 32, 56, 0.04);
+  --shadow-sm: 0 1px 2px rgba(26, 32, 56, 0.06), 0 1px 1px rgba(26, 32, 56, 0.04);
+  --shadow-md: 0 4px 10px rgba(26, 32, 56, 0.08), 0 1px 2px rgba(26, 32, 56, 0.05);
+  --shadow-lg: 0 10px 24px rgba(26, 32, 56, 0.10), 0 2px 6px rgba(26, 32, 56, 0.06);
+  --shadow-inset: inset 0 1px 0 rgba(251, 246, 233, 0.8), inset 0 -1px 0 rgba(26, 32, 56, 0.06);
+  --shadow-pressed: inset 0 2px 4px rgba(26, 32, 56, 0.12);
+
+  /* =========================================================
+     MOTION — slow, considered. No bounce.
+     ========================================================= */
+  --ease-standard: cubic-bezier(0.2, 0.0, 0.2, 1);
+  --ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in:       cubic-bezier(0.4, 0.0, 1.0, 1);
+  --dur-fast:   120ms;
+  --dur-base:   200ms;
+  --dur-slow:   400ms;
+  --dur-bloom: 700ms;  /* chart wheel reveal */
+}
+
+/* ============================================================
+   SEMANTIC ELEMENTS — use these as a base; override per-component
+   ============================================================ */
+html, body {
+  background: var(--bg);
+  color: var(--fg1);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.display, h1.display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg1);
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg1);
+  margin: 0;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  color: var(--fg1);
+  margin: 0;
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg1);
+  margin: 0;
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  color: var(--fg1);
+  margin: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+p, .p {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg2);
+  text-wrap: pretty;
+  margin: 0;
+}
+
+.lede {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--fg2);
+}
+
+.caption, small {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-snug);
+  color: var(--fg3);
+}
+
+code, kbd, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--fg2);
+}
+
+.glyph {
+  font-family: var(--font-symbol);
+  font-size: var(--fs-glyph);
+  line-height: 1;
+}
+
+hr, .rule {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: var(--sp-5) 0;
+}
+.rule-strong { border-top: 1px solid var(--rule-strong); }
+.rule-dotted { border-top: 1px dotted var(--rule-dotted); }
+
+/* Subtle parchment grain — apply to body or hero surfaces */
+.parchment-grain {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(rgba(176, 122, 60, 0.05) 1px, transparent 1px),
+    radial-gradient(rgba(26, 32, 56, 0.04) 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 1px;
+}

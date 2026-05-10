@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kshitiz Dhakal — Data &amp; AI Engineer</title>
+<meta name="description" content="Kshitiz Dhakal — Data &amp; AI engineer based in Kathmandu, working on healthcare NLP and LLM pipelines." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css" />
+<script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+</head>
+<body>
+
+<!-- Subtle starfield in the background -->
+<canvas id="starfield"></canvas>
+
+<!-- Cursor dot (desktop only) -->
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- ========================================================
+     MASTHEAD
+     ======================================================== -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <a href="#top" class="brand" aria-label="Kshitiz Dhakal — home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>
+        Kshitiz Dhakal
+        <small>Data &amp; AI Engineer · Kathmandu</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#now">Now</a>
+      <a href="#path">Path</a>
+      <a href="#work">Work</a>
+      <a href="#wheel">Stack</a>
+      <a href="#contact">Contact</a>
+      <button class="mood-toggle" id="moodToggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <span class="mood-track">
+          <span class="mood-thumb">
+            <span class="mood-icon mood-icon-day">○</span>
+            <span class="mood-icon mood-icon-night">●</span>
+          </span>
+        </span>
+      </button>
+      <span class="nav-meta" id="navClock">—</span>
+    </nav>
+  </div>
+</header>
+
+<!-- ========================================================
+     HERO
+     ======================================================== -->
+<main class="page" id="top" data-screen-label="01 Hero">
+  <section class="section hero" data-screen-label="01 Hero">
+    <aside class="model-card reveal" aria-hidden="true">
+      <div class="mc-tab">
+        <span class="mc-tab-dots"><span></span><span></span><span></span></span>
+        <span class="mc-tab-name">model_card.json</span>
+        <span class="mc-tab-status"><span class="mc-dot"></span>live</span>
+      </div>
+      <pre class="mc-body"><span class="mc-brace">{</span>
+  <span class="mc-key">"model"</span>: <span class="mc-str">"kshitiz-v1.engineer"</span>,
+  <span class="mc-key">"context"</span>: <span class="mc-str">"healthcare NLP /</span>
+              <span class="mc-str">data pipelines"</span>,
+  <span class="mc-key">"params"</span>: <span class="mc-num">3.2e9</span> <span class="mc-c">// runs</span>,
+  <span class="mc-key">"trained_on"</span>: [
+    <span class="mc-str">"Spark"</span>, <span class="mc-str">"LLMs"</span>, <span class="mc-str">"late nights"</span>,
+    <span class="mc-str">"Data"</span>, <span class="mc-str">"Fun"</span>
+  ],
+  <span class="mc-key">"latency_p95"</span>: <span class="mc-str">"<span id="mcLatency">42ms</span>"</span>,
+  <span class="mc-key">"uptime"</span>: <span class="mc-str">"99.97%"</span>,
+  <span class="mc-key">"last_deploy"</span>: <span class="mc-str">"<span id="mcDeploy">today</span>"</span>
+<span class="mc-brace">}</span></pre>
+      <div class="mc-graph" aria-hidden="true">
+        <svg viewBox="0 0 220 36" preserveAspectRatio="none">
+          <path id="mcSpark" d="" fill="none" stroke="var(--copper-400)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="mcSparkFill" d="" fill="var(--copper-400)" opacity="0.10"/>
+        </svg>
+        <span class="mc-graph-lbl">throughput · last 60s</span>
+      </div>
+    </aside>
+
+    <h1 class="hero-title">
+      <span class="first">Kshitiz</span>
+      <span class="last">Dhakal<span class="amp">.</span></span>
+    </h1>
+
+    <div class="hero-roles reveal" aria-label="What I do">
+      <span class="hero-roles-prefix">I am</span>
+      <span class="hero-roles-stage" aria-live="polite">
+        <span class="hero-role is-active">a Data &amp; AI Engineer.</span>
+        <span class="hero-role">thinking in Product.</span>
+        <span class="hero-role">a Pipeline Architect.</span>
+        <span class="hero-role">a Mentor.</span>
+        <span class="hero-role">a Lakehouse Builder.</span>
+        <span class="hero-role">a researcher in AI and LLMs.</span>
+        <span class="hero-role">an Engineer.</span>
+      </span>
+    </div>
+
+    <div class="hero-lede-block" style="margin-top: var(--sp-8);">
+        <p class="hero-lede">
+          An engineer who works with
+          <span class="accent">data, machine learning, and the craft</span>
+          of moving information from where it is to where it can be useful.
+        </p>
+
+        <div class="hero-meta" style="margin-top: var(--sp-8);">
+          <div class="meta-item">
+            <span class="label">Currently</span>
+            <span class="value">
+              <strong>Data Engineer</strong><br/>
+              Maitri Services &nbsp;·&nbsp; AI / Healthcare
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Based in</span>
+            <span class="value">
+              <strong>Kathmandu</strong><br/>
+              Nepal &nbsp;·&nbsp; UTC+05:45
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Available for</span>
+            <span class="value">
+              research, engineering,<br/>
+              consulting &amp; speaking
+            </span>
+          </div>
+        </div>
+      </div>
+
+    <!-- Stat row -->
+    <div class="index-row">
+      <div class="index-cell">
+        <span class="glyph">Σ</span>
+        <span class="num">3<span class="unit">+ yrs</span></span>
+        <span class="label">In production data eng.</span>
+      </div>
+      <div class="index-cell">
+        <span class="glyph">◆</span>
+        <span class="num">5</span>
+        <span class="label">Companies & fellowships</span>
+      </div>
+      <div class="index-cell">
+        <span class="glyph">∇</span>
+        <span class="num">1</span>
+        <span class="label">Peer-reviewed paper</span>
+      </div>
+      <div class="index-cell">
+        <span class="glyph">⌘</span>
+        <span class="num">∞<span class="unit"></span></span>
+        <span class="label">ETL pipelines, give or take</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       NOW
+       ======================================================== -->
+  <section class="section" id="now" data-screen-label="02 Now">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ I &nbsp;·&nbsp; What I'm doing now</span>
+      <span class="pageno">Section 01</span>
+    </div>
+
+    <article class="folio reveal">
+      <div>
+        <span class="folio-now-tag"><span class="pulse"></span> Currently at Maitri Services</span>
+        <h2>Mapping clinical text to <em>structured medical codes.</em></h2>
+        <p>
+          I am working on an NLP/LLM pipeline that reads unstructured clinical notes
+          and lifts the right ICD-10 and HCC codes out of them — quietly, reliably,
+          and within HIPAA's lines.
+        </p>
+        <p style="font-style: normal; font-family: var(--font-sans); font-size: 14px; color: var(--fg3);">
+          January 2026 — present &nbsp;·&nbsp; Remote / Kathmandu
+        </p>
+      </div>
+      <div>
+        <ul>
+          <li><span class="marker">01</span><span>Multi-stage inference: Named Entity Recognition → context modelling → embeddings → re-ranking → date-of-service detection.</span></li>
+          <li><span class="marker">02</span><span>Fine-tuned LLMs for clinical entity recognition and automated medical code prediction.</span></li>
+          <li><span class="marker">03</span><span>Asynchronous orchestration with AWS SQS + Celery — distributed, fault-tolerant, idempotent.</span></li>
+          <li><span class="marker">04</span><span>HIPAA-compliant handling of PHI, with practical training in US healthcare data privacy.</span></li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- ========================================================
+       PATH (timeline)
+       ======================================================== -->
+  <section class="section" id="path" data-screen-label="03 Path">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ II &nbsp;·&nbsp; The path so far</span>
+      <span class="pageno">Section 02</span>
+    </div>
+    <h2 class="section-title reveal">My career, <em>step by step.</em></h2>
+    <p class="section-sub reveal">Each role here marks a bench, a problem worth solving, and what I learned by moving on.</p>
+
+    <ol class="timeline timeline-list">
+      <li class="tl-item reveal">
+        <div class="tl-when">
+          <strong>2026 — present</strong>
+          <span>Jan onwards</span>
+        </div>
+        <div class="tl-glyph"><span class="g">▶</span></div>
+        <div class="tl-body">
+          <h3>Data Engineer, <em>AI &amp; healthcare</em></h3>
+          <p class="org">Maitri Services</p>
+          <p>Owning the inference architecture that turns clinical narrative into ICD-10 and HCC codes — NER, context modelling, embeddings, re-ranking, DOS detection — wrapped in HIPAA-grade data hygiene.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">LLMs</span>
+            <span class="tl-tag">NER</span>
+            <span class="tl-tag">AWS SQS</span>
+            <span class="tl-tag">Celery</span>
+            <span class="tl-tag">HIPAA</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-when">
+          <strong>2024 — 2025</strong>
+          <span>Aug → Dec</span>
+        </div>
+        <div class="tl-glyph"><span class="g">◆</span></div>
+        <div class="tl-body">
+          <h3>Data Engineer</h3>
+          <p class="org">GrowByData</p>
+          <p>Built a batch processing framework for Google Feeds, optimised an existing data acquisition stack, integrated new agencies, migrated Dremio from AWS to Kubernetes, and co-led the data team. Mentored interns. Wrote shell scripts at unholy hours.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Spark</span>
+            <span class="tl-tag">Dremio</span>
+            <span class="tl-tag">Kubernetes</span>
+            <span class="tl-tag">GraphQL</span>
+            <span class="tl-tag">Leadership</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-when">
+          <strong>2023 — 2024</strong>
+          <span>Aug → Aug</span>
+        </div>
+        <div class="tl-glyph"><span class="g">▲</span></div>
+        <div class="tl-body">
+          <h3>Associate Data Engineer</h3>
+          <p class="org">GrowByData</p>
+          <p>Designed Spark/Scala ETL pipelines, built a data-lakehouse on S3 + Glue, ran OAuth2 integrations with multi-threaded producer-consumer patterns, and stood up a Flask-based BI reporting backend with Redis caching and per-client anonymisation decorators.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">Scala</span>
+            <span class="tl-tag">Apache Spark</span>
+            <span class="tl-tag">S3 · Glue · EMR</span>
+            <span class="tl-tag">Flask</span>
+            <span class="tl-tag">Redis</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-when">
+          <strong>2023</strong>
+          <span>May → Jul</span>
+        </div>
+        <div class="tl-glyph"><span class="g">λ</span></div>
+        <div class="tl-body">
+          <h3>Data Engineering Fellow</h3>
+          <p class="org">GritFeat Solutions</p>
+          <p>A summer immersed in modern data tooling: PySpark on Databricks for weather forecasting, dbt for a hotel data project, Pentaho ETL, Snowflake, end-to-end cleaning to dashboards in Tableau and Power BI.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">PySpark</span>
+            <span class="tl-tag">dbt</span>
+            <span class="tl-tag">Snowflake</span>
+            <span class="tl-tag">Tableau</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="tl-item reveal">
+        <div class="tl-when">
+          <strong>2022</strong>
+          <span>Jul → Aug</span>
+        </div>
+        <div class="tl-glyph"><span class="g">ƒ</span></div>
+        <div class="tl-body">
+          <h3>Data Visualization Intern</h3>
+          <p class="org">GlobalShala</p>
+          <p>First professional brush with data: visualising advertising performance with pandas, pruning campaigns with weak ROAS. The first time SQL felt like a power, not a chore.</p>
+          <div class="tl-tags">
+            <span class="tl-tag">pandas</span>
+            <span class="tl-tag">SQL</span>
+            <span class="tl-tag">Visualisation</span>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- ========================================================
+       EDUCATION
+       ======================================================== -->
+  <section class="section" id="education" data-screen-label="04 Education">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ III &nbsp;·&nbsp; Education</span>
+      <span class="pageno">Section 03</span>
+    </div>
+    <h2 class="section-title reveal">Where the <em>toolbelt</em> was first assembled.</h2>
+
+    <article class="edu-card reveal">
+      <div class="edu-side">
+        <div class="edu-glyph" aria-hidden="true">
+          <span class="g">⊕</span>
+          <span class="edu-orbit"></span>
+        </div>
+        <div class="edu-when">
+          <strong>2018 — 2023</strong>
+          <span>Five years</span>
+        </div>
+        <div class="edu-stat">
+          <span class="edu-stat-num">78.9<span class="pct">%</span></span>
+          <span class="edu-stat-lbl">cumulative average</span>
+        </div>
+      </div>
+      <div class="edu-body">
+        <p class="edu-degree">Bachelor in Electronics, <em>Communication &amp; Information Technology</em></p>
+        <p class="edu-org">Pulchowk Campus &nbsp;·&nbsp; Institute of Engineering, Tribhuvan University</p>
+        <p class="edu-blurb">Five years where the foundations were poured — signal processing, machine-learning fundamentals, hands-on research. Where I first learned that data is most interesting at the edges where the model breaks.</p>
+
+        <ul class="edu-highlights">
+          <li>
+            <span class="edu-h-mark">⁂</span>
+            <div>
+              <strong>Capstone — Text Summarisation</strong>
+              <p>Latent Semantic Analysis paired with transformer encoders, evaluating where each technique covers the other's blind spots.</p>
+            </div>
+          </li>
+          <li>
+            <span class="edu-h-mark">⁂</span>
+            <div>
+              <strong>Research — Sentiment Classification</strong>
+              <p>A weighted ensemble of SVM and Naïve Bayes; later published in MAT Journals (2025).</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="edu-tags">
+          <span class="tl-tag">DSP</span>
+          <span class="tl-tag">ML fundamentals</span>
+          <span class="tl-tag">NLP research</span>
+          <span class="tl-tag">Communication systems</span>
+          <span class="tl-tag">Embedded</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ========================================================
+       WORK
+       ======================================================== -->
+  <section class="section" id="work" data-screen-label="05 Work">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ IV &nbsp;·&nbsp; Selected work</span>
+      <span class="pageno">Section 04</span>
+    </div>
+    <h2 class="section-title reveal">A field guide to <em>things I have built.</em></h2>
+    <p class="section-sub reveal">Spanning marketing intelligence, healthcare NLP, and a few stubborn personal projects that wouldn't leave my head.</p>
+
+    <div class="proj-grid">
+      <article class="proj reveal">
+        <div class="proj-no">№ 01 &nbsp;· &nbsp; Healthcare NLP</div>
+        <h3>ICD-10 &amp; HCC <em>code prediction.</em></h3>
+        <p>Multi-stage clinical NLP — NER, context modelling, embedding generation, re-ranking, date-of-service detection — built into a fault-tolerant async pipeline at Maitri Services.</p>
+        <div class="proj-meta">
+          <span class="stack">LLMs · NER · AWS · HIPAA</span>
+          <span>2026 →</span>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-no">№ 02 &nbsp;· &nbsp; Marketing science</div>
+        <h3>Media Mix <em>Modeling.</em></h3>
+        <p>A statistical regression engine that helped marketing specialists plan spend across channels. SLSQP optimisation for revenue, time-series analysis, and forward-looking forecasts that actually got read.</p>
+        <div class="proj-meta">
+          <span class="stack">Python · regression · SLSQP</span>
+          <span>GrowByData</span>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-no">№ 03 &nbsp;· &nbsp; LLM tooling</div>
+        <h3>LLM-based <em>insights.</em></h3>
+        <p>OpenAI integration into reporting — turning numerical anomalies into one-paragraph narratives the account team could send to clients without rewriting.</p>
+        <div class="proj-meta">
+          <span class="stack">OpenAI · Python · BI</span>
+          <span>GrowByData</span>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-no">№ 04 &nbsp;· &nbsp; Research project</div>
+        <h3>Weighted ensemble for <em>sentiment.</em></h3>
+        <p>A hybrid SVM + Naïve Bayes approach to sentiment classification — weighted to coax higher final accuracy than either model alone. Published in MAT Journals, 2025.</p>
+        <div class="proj-meta">
+          <span class="stack">SVM · NB · ensembling</span>
+          <span>Published</span>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-no">№ 05 &nbsp;· &nbsp; Research project</div>
+        <h3>Summarisation with <em>LSA + transformers.</em></h3>
+        <p>A custom transformer for abstractive summary, paired with LSA for extractive baselines. Heading generation by frequency normalisation; significant-word extraction as a side dish.</p>
+        <div class="proj-meta">
+          <span class="stack">Transformers · LSA · NLP</span>
+          <span>Undergraduate</span>
+        </div>
+      </article>
+
+      <article class="proj reveal">
+        <div class="proj-no">№ 06 &nbsp;· &nbsp; Personal project</div>
+        <h3>Co-occurrence of <em>medical procedures.</em></h3>
+        <p>An Apriori-driven exploration of which tests tend to follow which — a small bet on whether classical association rules still have something to say in clinical data.</p>
+        <div class="proj-meta">
+          <span class="stack">Apriori · health data</span>
+          <span>Personal</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       TAG CLOUD — skills as a constellation of words
+       ======================================================== -->
+  <section class="section cloud-section" id="wheel" data-screen-label="06 Skills">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ V &nbsp;·&nbsp; What I work with</span>
+      <span class="pageno">Section 05</span>
+    </div>
+    <h2 class="section-title reveal">A cloud of <em>tools and tongues.</em></h2>
+    <p class="section-sub reveal">Sized by how often I reach for them. Hover any tag to see which family it belongs to — or hover a family to gather its tags.</p>
+
+    <div class="cloud-grid">
+      <div class="cloud-stage reveal" id="cloudStage">
+        <!-- tags injected by script.js -->
+      </div>
+
+      <aside class="cloud-legend reveal">
+        <h3>Six families</h3>
+        <p>The colour and weight of every tag traces back here.</p>
+        <ul class="fam-list" id="famList">
+          <li data-fam="data"  style="--fam: var(--copper-500);"><span class="dot"></span>Data engineering<span class="muted">Spark · Scala · ETL · lakehouse</span></li>
+          <li data-fam="cloud" style="--fam: var(--ink-700);"   ><span class="dot"></span>Cloud &amp; ops<span class="muted">AWS · S3 · EMR · SQS · Glue</span></li>
+          <li data-fam="ml"    style="--fam: #B74A26;"          ><span class="dot"></span>ML &amp; modelling<span class="muted">SVM · NB · ensembling · regression</span></li>
+          <li data-fam="llm"   style="--fam: #47705A;"          ><span class="dot"></span>LLMs &amp; NLP<span class="muted">NER · transformers · embeddings</span></li>
+          <li data-fam="lang"  style="--fam: var(--copper-600);"><span class="dot"></span>Languages<span class="muted">Python · Scala · SQL · shell</span></li>
+          <li data-fam="craft" style="--fam: var(--ink-500);"   ><span class="dot"></span>Craft &amp; tooling<span class="muted">Git · BI · OOP · mentoring</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PUBLICATIONS + AWARDS
+       ======================================================== -->
+  <section class="section" id="ledger" data-screen-label="07 Ledger">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ VI &nbsp;·&nbsp; Writing &amp; awards</span>
+      <span class="pageno">Section 06</span>
+    </div>
+    <h2 class="section-title reveal">Publications, <em>and a few small honours.</em></h2>
+
+    <div class="split">
+      <div class="reveal">
+        <div class="pub">
+          <div class="pub-item">
+            <div class="pub-year">2025</div>
+            <div class="pub-body">
+              <h4>A Weighted Ensemble Approach to Sentiment Classification using SVM and Naïve Bayes.</h4>
+              <p class="where">MAT Journals &nbsp;·&nbsp; August 2025</p>
+              <p>A study in how a weighted blend of two classical classifiers can edge past either alone, with attention to where each model fails the other can cover.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub" style="margin-top: var(--sp-7);">
+          <div class="pub-item">
+            <div class="pub-year">Cert.</div>
+            <div class="pub-body">
+              <h4>Standing certificates.</h4>
+              <p class="where">AWS · Coursera · IBM</p>
+              <p>AWS Academy Cloud Foundations &nbsp;·&nbsp; Deep Learning Specialization &nbsp;·&nbsp; IBM Data Science Specialization.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="awards reveal">
+        <h3>Honours &amp; awards</h3>
+        <div class="award-item">
+          <div class="seal">EQ</div>
+          <div class="info">
+            <h4>Employee of the Quarter</h4>
+            <div class="where">GrowByData &nbsp;·&nbsp; July 2024</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="seal">E²</div>
+          <div class="info">
+            <h4>E = mc² Olympiad</h4>
+            <div class="where">Nepal Physics Olympiad &nbsp;·&nbsp; 2018</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="seal">N</div>
+          <div class="info">
+            <h4>NESO Science Olympiad</h4>
+            <div class="where">Nepal Science Olympiad &nbsp;·&nbsp; 2018</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       RECOMMENDATIONS
+       ======================================================== -->
+  <section class="section" id="recs" data-screen-label="08 Recommendations">
+    <div class="eyebrow-row">
+      <span class="eyebrow">§ VII &nbsp;·&nbsp; References</span>
+      <span class="pageno">Section 07</span>
+    </div>
+    <h2 class="section-title reveal">People who'll <em>vouch for me.</em></h2>
+    <p class="section-sub reveal">Three people who have signed off on shipped work and weathered hard quarters with me.</p>
+
+    <div class="recs-grid">
+      <article class="rec reveal">
+        <h4>Kyle Tremblay</h4>
+        <p class="role">Director of Product Development &nbsp;·&nbsp; <span>Agital USA</span></p>
+        <p>Two years of partnership across BI reporting, ML-driven features, and LLM-based analysis on the proprietary platform. Watched the role grow from individual contributor to co-managing the backend team — both shipping new third-party integrations and mentoring the people building them.</p>
+      </article>
+      <article class="rec reveal">
+        <h4>Frank Kjaersgaard</h4>
+        <p class="role">Chief Product Officer &nbsp;·&nbsp; <span>Agital USA</span></p>
+        <p>Sponsor of the move to a modern lakehouse end-to-end — feed pipelines, query optimisation, model and LLM enhancements. Notes especially the times during team transitions when critical workloads were absorbed independently and operations kept running, quietly, without dropping a beat.</p>
+      </article>
+      <article class="rec reveal">
+        <h4>Ambika Adhikari</h4>
+        <p class="role">Engineering Manager &nbsp;·&nbsp; <span>Maitri Services</span></p>
+        <p>Supervised the pivot from an Electronics &amp; Communication background into industrial data work — ETL, integrations, statistical modelling, and a Media Mix Modeling forecaster built from scratch. Possesses a researcher's mind: explore several approaches, evaluate honestly, then own the result either way.</p>
+      </article>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CONTACT
+       ======================================================== -->
+  <section class="section contact" id="contact" data-screen-label="09 Contact">
+    <span class="eyebrow" style="display:inline-block; margin-bottom: var(--sp-6);">§ VIII &nbsp;·&nbsp; Get in touch</span>
+    <h2>Let's <em>talk.</em></h2>
+    <p class="lede">If something here lines up with what you're building — a healthcare data problem, an LLM pipeline, a stubbornly slow ETL — I'd love to hear about it.</p>
+
+    <div class="contact-research">
+      <span class="cr-tag">also</span>
+      <p class="cr-text">
+        If your work lives in <em>research</em> — papers waiting to be co-authored,
+        datasets begging to be wrangled, AI &amp; data ideas worth chasing —
+        <strong>that letter is welcome too.</strong>
+      </p>
+    </div>
+
+    <a class="contact-mail" href="mailto:kshitiz.dhakal50@gmail.com">kshitiz.dhakal50@gmail.com</a>
+    <div class="contact-meta">
+      <span>Kathmandu, Nepal</span>
+      <a href="tel:+9779860113482">+977 9860 113482</a>
+      <a href="https://github.com/kshitiz28" target="_blank" rel="noopener">github · kshitiz28</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       COLOPHON
+       ======================================================== -->
+  <footer class="colophon">
+    <span>© 2026 · Kshitiz Dhakal</span>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+<script src="tweaks.js"></script>
+</body>
+</html>
