@@ -8,7 +8,7 @@
 
 (function tweaks() {
   const TWEAKS = /*EDITMODE-BEGIN*/{
-    "mood": "day",
+    "mood": "night",
     "texture": 50,
     "motion": "slow"
   }/*EDITMODE-END*/;

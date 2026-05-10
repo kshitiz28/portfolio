@@ -517,16 +517,24 @@
   let mood = 'day';
 
   function buildStars() {
-    // density scales with texture, with a baseline floor + ceiling
+    // density scales with texture; bumped up in night mode for a starrier sky
     const base = (window.innerWidth * window.innerHeight) / 38000;
-    const count = Math.floor(base * (0.35 + texture * 1.6));
-    stars = Array.from({ length: count }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      r: Math.random() * 1.1 + 0.2,
-      tw: Math.random() * Math.PI * 2,
-      sp: 0.004 + Math.random() * 0.012,
-    }));
+    const moodMult = mood === 'night' ? 2.6 : 1;
+    const count = Math.floor(base * (0.35 + texture * 1.6) * moodMult);
+    stars = Array.from({ length: count }, () => {
+      const isBright = Math.random() < 0.08;     // ~8% brighter twinklers
+      const isHuge   = Math.random() < 0.012;    // rare large diamonds
+      return {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: isHuge ? 1.8 + Math.random() * 1.0
+           : isBright ? 1.0 + Math.random() * 0.8
+           : Math.random() * 1.1 + 0.2,
+        tw: Math.random() * Math.PI * 2,
+        sp: 0.004 + Math.random() * 0.018,
+        bright: isBright || isHuge,
+      };
+    });
   }
 
   function resize() {
@@ -548,7 +556,7 @@
       texture = next.texture / 100;
       needsRebuild = true;
     }
-    if (next.mood && next.mood !== mood) mood = next.mood;
+    if (next.mood && next.mood !== mood) { mood = next.mood; needsRebuild = true; }
     if (next.motion && next.motion !== motion) motion = next.motion;
     if (needsRebuild) buildStars();
   });
@@ -564,10 +572,18 @@
     for (const s of stars) {
       s.tw += s.sp * speed;
       const alpha = baseAlpha + Math.sin(s.tw) * ampAlpha;
-      ctx.fillStyle = `rgba(${colorBase}, ${Math.max(0, alpha)})`;
+      const a = Math.max(0, alpha);
+      ctx.fillStyle = `rgba(${colorBase}, ${a})`;
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r * (onNight ? 1.1 : 1), 0, Math.PI * 2);
       ctx.fill();
+      // Bright stars get a soft halo on night mode
+      if (onNight && s.bright) {
+        ctx.fillStyle = `rgba(${colorBase}, ${a * 0.18})`;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 3.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
     requestAnimationFrame(draw);
   }

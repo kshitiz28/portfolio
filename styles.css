@@ -225,10 +225,43 @@ a { color: inherit; text-decoration: none; }
   display: none;
 }
 
-/* ----- Mood toggle (sun/moon switch in masthead) ----- */
+/* ----- Mood toggle (single moon/sun icon button) ----- */
 .mood-toggle {
-  background: none;
-  border: 0;
+  background: var(--bg-raised);
+  border: 1px solid var(--rule);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--ink-800);
+  transition: border-color var(--dur-fast) var(--ease-standard),
+              background var(--dur-fast) var(--ease-standard),
+              transform var(--dur-fast) var(--ease-standard);
+}
+.mood-toggle:hover {
+  border-color: var(--copper-500);
+  color: var(--copper-500);
+  transform: rotate(-12deg);
+}
+.mood-icon-svg {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition: opacity 380ms var(--ease-standard),
+              transform 380ms var(--ease-standard);
+}
+/* Day mode → show moon (clicking would switch to night) */
+body[data-mood="day"] .mood-icon-svg.moon { opacity: 1; transform: rotate(0deg) scale(1); }
+body[data-mood="day"] .mood-icon-svg.sun  { opacity: 0; transform: rotate(90deg) scale(0.4); }
+/* Night mode → show sun (clicking would switch to day) */
+body[data-mood="night"] .mood-icon-svg.moon { opacity: 0; transform: rotate(-90deg) scale(0.4); }
+body[data-mood="night"] .mood-icon-svg.sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+
   padding: 0;
   cursor: pointer;
   display: inline-flex;
