@@ -2465,6 +2465,507 @@ body[data-mood="night"] .tw-opt.on {
 .cursor-dot.lift { width: 28px; height: 28px; background: rgba(176, 122, 60, 0.08); }
 
 /* ============================================================
+   NEURAL PIPELINE — fixed section navigator
+   ============================================================ */
+#neural-nav {
+  position: fixed;
+  top: 50%;
+  right: 28px;
+  transform: translateY(-50%);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  pointer-events: none;
+  max-height: calc(100vh - 120px);
+}
+#neural-nav > * { pointer-events: auto; }
+
+@media (max-width: 1100px) { #neural-nav { right: 14px; } }
+@media (max-width: 900px)  { #neural-nav { display: none; } }
+
+.nn-rail {
+  position: relative;
+  width: 32px;
+}
+.nn-svg {
+  position: absolute;
+  inset: 0;
+  width: 32px;
+  overflow: visible;
+}
+.nn-line {
+  fill: none;
+  stroke-linecap: round;
+}
+.nn-line-bg {
+  stroke: var(--rule);
+  stroke-width: 1.2;
+  stroke-dasharray: 2 4;
+  opacity: 0.85;
+}
+.nn-line-fg {
+  stroke: var(--copper-400);
+  stroke-width: 1.8;
+  filter: drop-shadow(0 0 4px rgba(176, 122, 60, 0.35));
+}
+.nn-packet {
+  filter: drop-shadow(0 0 6px rgba(176, 122, 60, 0.7));
+}
+
+.nn-nodes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+}
+.nn-node {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-standard);
+}
+.nn-node:hover { transform: scale(1.15); }
+.nn-dot {
+  position: absolute;
+  inset: 6px;
+  border: 1.4px solid var(--ink-700);
+  border-radius: 50%;
+  background: var(--bg-raised);
+  transition: border-color var(--dur-base) var(--ease-standard),
+              background var(--dur-base) var(--ease-standard),
+              transform var(--dur-base) var(--ease-standard);
+}
+.nn-no {
+  position: absolute;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--fg3);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-standard), color var(--dur-base);
+  pointer-events: none;
+}
+.nn-node.past .nn-dot {
+  background: var(--copper-400);
+  border-color: var(--copper-500);
+}
+.nn-node.on .nn-dot {
+  background: var(--copper-400);
+  border-color: var(--copper-600);
+  transform: scale(1.4);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--copper-400),
+              0 0 12px rgba(176, 122, 60, 0.6);
+  animation: nn-pulse 2.2s ease-in-out infinite;
+}
+.nn-node.on .nn-no { opacity: 1; color: var(--copper-700); }
+@keyframes nn-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--copper-400), 0 0 12px rgba(176, 122, 60, 0.5); }
+  50%      { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--copper-300), 0 0 24px rgba(176, 122, 60, 0.85); }
+}
+
+/* Terminal-style tooltip */
+.nn-tip {
+  position: absolute;
+  right: 100%;
+  margin-right: 12px;
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-800);
+  border-radius: 8px;
+  padding: 10px 14px;
+  min-width: 160px;
+  font-family: var(--font-mono);
+  opacity: 0;
+  transform: translateX(8px);
+  transition: opacity var(--dur-base) var(--ease-standard),
+              transform var(--dur-base) var(--ease-standard),
+              top var(--dur-base) var(--ease-standard);
+  pointer-events: none;
+  box-shadow: 4px 4px 0 var(--rule);
+}
+.nn-tip.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+.nn-tip::after {
+  content: "";
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px; height: 10px;
+  background: var(--bg-raised);
+  border-right: 1px solid var(--ink-800);
+  border-top: 1px solid var(--ink-800);
+}
+.nn-tip-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ink-800);
+}
+.nn-tip-prompt {
+  color: var(--copper-500);
+  font-weight: 600;
+}
+.nn-tip-name {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.nn-tip-name::after {
+  content: "_";
+  margin-left: 1px;
+  color: var(--copper-500);
+  animation: caret-blink 1s steps(1) infinite;
+}
+.nn-tip-sub {
+  margin-top: 3px;
+  font-size: 10.5px;
+  color: var(--fg3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Night-mode adjustments */
+body[data-mood="night"] .nn-tip {
+  background: var(--bg-raised);
+  border-color: var(--rule);
+}
+body[data-mood="night"] .nn-tip::after {
+  background: var(--bg-raised);
+  border-color: var(--rule);
+}
+body[data-mood="night"] .nn-node .nn-dot {
+  background: var(--bg-sunken);
+  border-color: var(--fg3);
+}
+body[data-mood="night"] .nn-node.past .nn-dot,
+body[data-mood="night"] .nn-node.on .nn-dot {
+  background: var(--copper-300);
+  border-color: var(--copper-400);
+}
+
+/* ============================================================
+   ASK THE PAGE — small AI chat widget
+   ============================================================ */
+#ask-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 90;
+  font-family: var(--font-mono);
+}
+
+.ask-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 14px;
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-800);
+  border-radius: 999px;
+  color: var(--ink-800);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 2px 0 var(--rule);
+  transition: transform var(--dur-fast) var(--ease-standard),
+              border-color var(--dur-fast) var(--ease-standard),
+              color var(--dur-fast) var(--ease-standard);
+}
+.ask-toggle:hover {
+  border-color: var(--copper-500);
+  color: var(--copper-600);
+  transform: translateY(-1px);
+}
+.ask-toggle-prefix {
+  color: var(--copper-500);
+  font-weight: 600;
+  margin-right: 4px;
+}
+.ask-pulse {
+  width: 9px; height: 9px;
+  background: var(--copper-400);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(176, 122, 60, 0.5);
+  animation: ask-pulse 2s ease-out infinite;
+}
+@keyframes ask-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(176, 122, 60, 0.55); }
+  70%  { box-shadow: 0 0 0 10px rgba(176, 122, 60, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(176, 122, 60, 0); }
+}
+#ask-widget.open .ask-toggle { display: none; }
+
+.ask-panel {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(280px, calc(100vw - 32px));
+  max-height: min(380px, calc(100vh - 80px));
+  background: var(--bg-raised);
+  border: 1px solid var(--ink-800);
+  border-radius: 12px;
+  box-shadow: 4px 4px 0 var(--rule);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: ask-rise 320ms cubic-bezier(0.2,0,0.2,1);
+}
+.ask-panel[hidden] { display: none !important; }
+#ask-widget:not(.open) .ask-panel { display: none !important; }
+@keyframes ask-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ask-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--bg-sunken);
+  border-bottom: 1px solid var(--rule);
+  cursor: default;
+}
+.ask-head-dots { display: inline-flex; gap: 5px; }
+.ask-head-dots span {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--ink-400);
+}
+.ask-head-dots span:nth-child(1) { background: #D9534F; }
+.ask-head-dots span:nth-child(2) { background: #D9A35E; }
+.ask-head-dots span:nth-child(3) { background: #4F9A55; }
+.ask-head-title {
+  flex: 1;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--fg2);
+  font-weight: 500;
+}
+.ask-close {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 18px;
+  line-height: 0;
+  font-weight: 700;
+  color: var(--fg2);
+  cursor: pointer;
+  padding: 0 0 8px 0;
+  font-family: var(--font-mono);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.ask-close:hover {
+  color: var(--copper-500);
+  border-color: var(--copper-500);
+  background: var(--copper-50);
+}
+
+.ask-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 140px;
+}
+.ask-msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink-800);
+}
+.ask-msg-icon {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  font-size: 12px;
+  color: var(--copper-500);
+  background: var(--bg);
+  font-weight: 600;
+}
+.ask-msg-user .ask-msg-icon {
+  color: var(--ink-800);
+  background: var(--bg-raised);
+}
+.ask-msg-assistant .ask-msg-icon {
+  background: var(--copper-50);
+  border-color: var(--copper-300);
+}
+.ask-msg-body {
+  flex: 1;
+  font-family: var(--font-sans);
+  color: var(--ink-800);
+}
+.ask-msg-user .ask-msg-body {
+  color: var(--fg2);
+  font-style: italic;
+}
+.ask-msg.typing .ask-msg-body::after {
+  content: " …";
+  color: var(--copper-500);
+  animation: ask-blink 1s steps(1) infinite;
+}
+@keyframes ask-blink { 50% { opacity: 0.2; } }
+
+.ask-suggest {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 14px 10px;
+  border-top: 1px dotted var(--rule-dotted);
+  align-items: center;
+  transition: opacity 300ms, max-height 300ms;
+  overflow: hidden;
+}
+.ask-suggest.hide {
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: 0;
+}
+.ask-suggest-lbl {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fg3);
+  margin-right: 4px;
+}
+.ask-suggest button {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg2);
+  cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast);
+}
+.ask-suggest button:hover {
+  border-color: var(--copper-500);
+  color: var(--copper-600);
+}
+
+.ask-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+.ask-form-prefix {
+  color: var(--copper-500);
+  font-weight: 600;
+  font-size: 14px;
+}
+.ask-form input {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-800);
+  padding: 6px 0;
+  outline: none;
+}
+.ask-form input::placeholder { color: var(--fg3); }
+.ask-send {
+  width: 28px; height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  background: var(--bg-raised);
+  color: var(--copper-500);
+  cursor: pointer;
+  transition: border-color var(--dur-fast), background var(--dur-fast), transform var(--dur-fast);
+}
+.ask-send:hover {
+  border-color: var(--copper-500);
+  background: var(--copper-50);
+  transform: translateX(1px);
+}
+.ask-send:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.ask-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px 9px;
+  border-top: 1px dashed var(--rule);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+.ask-foot-led {
+  width: 6px; height: 6px;
+  background: #4F9A55;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(79, 154, 85, 0.6);
+}
+
+/* Night mode adjustments */
+body[data-mood="night"] .ask-toggle,
+body[data-mood="night"] .ask-panel {
+  border-color: var(--rule);
+}
+body[data-mood="night"] .ask-msg-assistant .ask-msg-icon {
+  background: rgba(217, 163, 94, 0.15);
+  border-color: var(--copper-400);
+  color: var(--copper-300);
+}
+
+/* Mobile: full-width bottom sheet */
+@media (max-width: 640px) {
+  #ask-widget {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+  }
+  .ask-panel {
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 70vh;
+  }
+}
+
+/* Keep the right-side neural nav from colliding with the ask widget */
+@media (min-width: 901px) {
+  #neural-nav { bottom: auto; }
+}
+
+/* ============================================================
    ROUNDED EDGES — soften card-like boxes
    Applied via overrides at the end so it wins specificity
    ============================================================ */
